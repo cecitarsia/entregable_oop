@@ -1,30 +1,84 @@
 <?php
 
-	class Curso {
-		protected $nombreCurso;
-		protected $codigoCurso;
+class Curso{
+
+  private $nombreCurso;
+  private $codigoCurso;
+  private $ProfesorTitular;
+  private $ProfesorAdjunto;
+  private $CupoMaximo;
+  private $Alumnos = [];
 
 
-		public function __construct(string $elNombreCurso, int $elCodigoCurso)
-		{
-			$this->setNombre($elNombreCurso);
-			$this->setCodigo($elCodigoCurso);
-			}
+  public function __construct(string $elNombreCurso, int $elCodigoCurso, int $CupoMaximo)
+  {
+    $this->setCoursename($elNombreCurso);
+    $this->setCoursenumber($elCodigoCurso);
+    $this->setCupoMaximo($CupoMaximo);
+    }
 
-
-			public function setNombre($elNombreCurso) {
-				$this->nombre = $elNombreCurso;
-			}
-
-			public function getNombre() {
-				return $this->nombre;
-			}
-
-			public function setCodigo($elCodigoCurso) {
-				$this->codigo = $elCodigoCurso;
-			}
-
-			public function getCodigo() {
-				return $this->codigo;
-			}
+  public function getCoursename(){
+		return $this->nombreCurso;
 	}
+
+	public function setCoursename($elNombreCurso){
+		$this->nombreCurso = $elNombreCurso;
+	}
+
+	public function getCoursenumber(){
+		return $this->codigoCurso;
+	}
+
+	public function setCoursenumber($elCodigoCurso){
+		$this->codigoCurso = $elCodigoCurso;
+	}
+
+  public function getProfesorTitular(){
+		return $this->ProfesorTitular;
+	}
+
+	public function setProfesorTitular($elProfesorTitular){
+		$this->ProfesorTitular = $elProfesorTitular;
+	}
+
+	public function getProfesorAdjunto(){
+		return $this->ProfesorAdjunto;
+	}
+
+	public function setProfesorAdjunto($elProfesorAdjunto){
+		$this->ProfesorAdjunto = $elProfesorAdjunto;
+	}
+
+	public function getCupoMaximo(){
+		return $this->CupoMaximo;
+	}
+
+	public function setCupoMaximo($elCupoMaximo){
+		$this->CupoMaximo = $elCupoMaximo;
+	}
+
+	public function getAlumnos(){
+		return $this->Alumnos;
+	}
+
+	public function setAlumnos($elAlumno){
+		$this->Alumnos[] = $elAlumno;
+	}
+
+  public function listarAlumnos(){
+    $ListaDeAlumnos = getAlumnos()
+		   echo "<ul>";
+      foreach ($ListaDeAlumnos as $Alumno) {
+        echo "<li> $Alumno </li>";
+      }
+        echo "</ul>";
+    }
+
+    public function AgregarAlumno($unAlumno){
+      $ListaDeAlumnos = getAlumnos();
+      $CupoMaximo = getCupoMaximo();
+      if (count ($ListaDeAlumnos) < $CupoMaximo){
+  		setAlumnos($unAlumno);
+  	   }
+    }
+}
