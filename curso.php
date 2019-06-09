@@ -81,4 +81,13 @@ class Curso{
   		setAlumnos($unAlumno);
   	   }
     }
+
+    public function listarProfesores(){
+      $ProfesorTitular = getProfesorTitular()
+      $ProfesorAdjunto = getProfesorAdjunto()
+         echo "<ul>";
+         echo "<li> Proseror Titular: $ProfesorTitular </li>";
+         echo "<li> Proseror Adjunto: $ProfesorAdjunto </li>";
+         echo "</ul>";
+      }
 }
