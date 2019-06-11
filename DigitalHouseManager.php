@@ -20,7 +20,7 @@
 
   public function setlistaProfesores($elProfesor)
   {
-    $this->listaProfesors[] = $elProfesor;
+    $this->listaProfesores[] = $elProfesor;
   }
 
   public function getlistaProfesores()
