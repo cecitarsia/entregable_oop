@@ -1,6 +1,6 @@
 <?php
 
-	abstract class Profesor {
+	  class Profesor {
 		protected $nombre;
 		protected $apellido;
 		protected $antiguedad;

@@ -8,7 +8,13 @@ class Titular extends Profesor {
     parent::__construct($elNombre, $elApellido, $laAntiguedad, $elCodigo)
 		 $this->setEspecialidad($laEspecialidad);
 
+     public function setEspecialidad($laEspecialidad) {
+       $this->$especialidad = $laEspecialidad;
+     }
 
+     public function getEspecialidad() {
+       return $this->especialidad;
+     }
 
 }
 }

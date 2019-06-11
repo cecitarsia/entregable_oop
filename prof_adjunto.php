@@ -9,6 +9,12 @@ class Adjunto extends Profesor {
 		 $this->setHoras($cantHoras);
 
 
+     public function setHoras($cantHoras) {
+       $this->$cantHoras = $cantHoras;
+     }
 
+     public function getHoras() {
+       return $this->$cantHoras;
+     }
 
 }}
