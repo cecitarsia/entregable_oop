@@ -1,4 +1,6 @@
 <?php
+require_once 'autoload';
+
 
 class Curso{
 
@@ -70,13 +72,15 @@ class Curso{
         echo "</ul>";
     }
 
+
+
     public function AgregarAlumno($unAlumno){
       $ListaDeAlumnos = getAlumnos();
       $CupoMaximo = getCupoMaximo();
       if (count ($ListaDeAlumnos) < $CupoMaximo){
   		$this->Alumnos[] = $unAlumno;
-  	   }
-       else return false;
+      }
+      return false;
     }
 
     public function listarProfesores(){
