@@ -63,12 +63,8 @@ class Curso{
 		return $this->Alumnos;
 	}
 
-	public function setAlumnos($elAlumno){
-		$this->Alumnos[] = $elAlumno;
-	}
-
   public function listarAlumnos(){
-    $ListaDeAlumnos = getAlumnos()
+    $ListaDeAlumnos = getAlumnos();
 		   echo "<ul>";
       foreach ($ListaDeAlumnos as $Alumno) {
         echo "<li> $Alumno </li>";
@@ -82,13 +78,14 @@ class Curso{
       $ListaDeAlumnos = getAlumnos();
       $CupoMaximo = getCupoMaximo();
       if (count ($ListaDeAlumnos) < $CupoMaximo){
-  		setAlumnos($unAlumno) : false;
-  	   }
+  		$this->Alumnos[] = $unAlumno;
+      }
+      return false;
     }
 
     public function listarProfesores(){
-      $ProfesorTitular = getProfesorTitular()
-      $ProfesorAdjunto = getProfesorAdjunto()
+      $ProfesorTitular = getProfesorTitular();
+      $ProfesorAdjunto = getProfesorAdjunto();
          echo "<ul>";
          echo "<li> Profesor Titular: $ProfesorTitular </li>";
          echo "<li> Profesor Adjunto: $ProfesorAdjunto </li>";
