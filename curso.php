@@ -1,5 +1,5 @@
 <?php
-require_once 'autoload';
+require_once 'autoload.php';
 
 
 class Curso{
@@ -90,8 +90,8 @@ class Curso{
       $ProfesorTitular = getProfesorTitular()
       $ProfesorAdjunto = getProfesorAdjunto()
          echo "<ul>";
-         echo "<li> Proseror Titular: $ProfesorTitular </li>";
-         echo "<li> Proseror Adjunto: $ProfesorAdjunto </li>";
+         echo "<li> Profesor Titular: $ProfesorTitular </li>";
+         echo "<li> Profesor Adjunto: $ProfesorAdjunto </li>";
          echo "</ul>";
       }
 }

@@ -1,7 +1,7 @@
 <?php
-require_once 'alumno';
-require_once 'curso';
-require_once 'profesor';
-require_once 'prof_adjunto';
-require_once 'prof_titular';
-require_once 'DigitalHouseManager';
+require_once 'alumno.php';
+require_once 'curso.php';
+require_once 'profesor.php';
+require_once 'prof_adjunto.php';
+require_once 'prof_titular.php';
+require_once 'DigitalHouseManager.php';

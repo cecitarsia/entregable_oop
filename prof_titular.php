@@ -1,5 +1,7 @@
 <?php
 
+require_once 'profesor.php';
+
 class Titular extends Profesor {
   protected $especialidad;
 

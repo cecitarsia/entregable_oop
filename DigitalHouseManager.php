@@ -1,5 +1,5 @@
 <?php
-// require_once 'autoload';
+	require_once 'autoload.php';
 
 
 	abstract class DigitalHouseManager
@@ -9,70 +9,109 @@
 		protected $listaCursos = [];
 
 
-		public function setlistaAlumnos($elAlumno)
+		public function setListaAlumnos($elAlumno)
 		{
 			$this->listaAlumnos[] = $elAlumno;
 		}
 
-		public function getlistaAlumnos()
+		public function getListaAlumnos()
 		{
 			return $this->listaAlumnos;
 		}
 
 
-  public function setlistaProfesores($elProfesor)
+  public function setListaProfesores($elProfesor)
   {
-    $this->listaProfesors[] = $elProfesor;
+    $this->listaProfesores[] = $elProfesor;
   }
 
-  public function getlistaProfesores()
+  public function getListaProfesores()
   {
     return $this->listaProfesores;
   }
 
 
-  public function setlistaCursos($elCurso)
+  public function setListaCursos($elCurso)
   {
     $this->listaCursos[]= $elCurso;
   }
 
-  public function getlistaCursos()
+  public function getListaCursos()
   {
     return $this->listaCursos;
   }
 
-	//H.1 -> Crea un curso y lo agrega a la lista de Cursos (¿agregarlo sería instanciarlo?)
-	public function altaCurso($nombreCurso, $codigoCurso, $cupoMaximoDealumnos){
-		$nombreCurso= getCoursename();
-		$codigoCurso= getCoursenumber();
-		$cupoMaximoDealumnos= getCupoMaximo();
+	//H.1 -> Crea un curso y lo agrega a la lista de Cursos
+	public function altaCurso($nombreCurso, $codigoCurso, $cupoMaximoDeAlumnos){
+		$nuevoCurso = new Curso($nombreCurso, $codigoCurso, $cupoMaximoDeAlumnos);
+    array_push($this->listaCursos, $nuevoCurso);
+    return $nuevoCurso;
 		}
-	// $curso = new curso();
-	// $curso->altaCurso()
+
 
 	//H.2 -> Crea un profesor adjunto y lo agrega a la lista de profesores
 	public function altaProfesorAdjunto($nombre, $apellido, $codigoProfesor, $cantidadDeHoras){
-		$nombre= getNombre();
-		$apellido= getApellido();
-		$codigoProfesor= getCodigo();
-		$cantidadDeHoras= getHoras();
+		$nuevoAdjunto = new Adjunto ($nombre, $apellido, 0, $codigoProfesor, $cantidadDeHoras);
+    array_push($this->listaProfesores, $nuevoAdjunto);
+    return $nuevoAdjunto;
 		}
-	// $Adjunto = new Adjunto();
-	// $Adjunto->altaProfesorAdjunto()
+
 
 	//H.3 -> Crea un profesor Titular y lo agrega a la lista de profesores
 	public function altaProfesorTitular($nombre, $apellido, $codigoProfesor, $especialidad){
-		$nombre= getNombre();
-		$apellido= getApellido();
-		$codigoProfesor= getCodigo();
-		$especialidad= getEspecialidad();
+		$nuevoTitular = new Titular ($nombre, $apellido, 0, $codigoProfesor, $especialidad);
+    array_push($this->listaProfesores, $nuevoTitular);
+    return $nuevoTitular;
 		}
 
 	//H.4 -> Crea un Alumno y lo agrega a la lista de alumnos
 	public function altaAlumno($nombre, $apellido, $codigoAlumno){
-	  $nombre= getNombre();
-		$apellido= getApellido();
-		$codigoAlumno= getCodigo();
+		$nuevoAlumno = new Alumno ($nombre, $apellido, $codigoAlumno);
+    array_push($this->listaAlumnos, $nuevoAlumno);
+    return $nuevoTitular;
 		}
 
+	//I.5 -> Inscribe un alumno a un curso si hay cupo disponible
+
+		//	a. Recorre la lista de cursos y elige el curso
+		public function tomarCurso($codigoCurso){
+	    foreach ($this->listaCursos as $curso) {
+	      if ($curso->getCoursenumber() === $codigoCurso) {
+	        return $curso;
+	      }
+	    }
+	  }
+		//	b. Recorre la lista de alumnos y elige al alumno
+		public function tomarAlumno($codigoAlumno){
+			foreach ($this->listaAlumnos as $alumno) {
+				if ($alumno->getCodigo() === $codigoAlumno) {
+					return $alumno;
+				}
+			}
+		}
+
+	public function inscribirAlumno($codigoAlumno, $codigoCurso){
+		$curso = $this->tomarCurso($codigoCurso);
+		$alumno = $this->tomarAlumno($codigoAlumno);
+		if ($curso->agregarAlumno($alumno) == true) {
+			echo "¡Inscripción exitosa!";
+		}else {
+			echo "Se ha alcanzado el cupo máximo de inscripciones a este curso.";
+		}
 	}
+
+	//I.6 -> Asigna profesores a un curso
+	public function asignarProfesores($codigoCurso, $codigoProfesorTitular, $codigoProfesorAdjunto)
+	//	a. Busca al profesor titular en la lista de profesores
+	$profesorTitular = $this->buscarProfesorTitular($codigoProfesorTitular);
+	//	b. Busca al profesor adjunto en la lista de profesores
+	$profesorAdjunto = $this->buscarProfesorAdjunto($codigoProfesorAdjunto);
+
+
+
+
+
+
+
+
+}

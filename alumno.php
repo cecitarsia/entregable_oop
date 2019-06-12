@@ -1,6 +1,4 @@
 <?php
-require_once 'autoload';
-
 
 	class Alumno {
 		protected $nombre;

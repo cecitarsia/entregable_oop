@@ -1,7 +1,9 @@
 <?php
 
+require_once 'profesor.php';
+
 class Adjunto extends Profesor {
-  protected $horas;
+  protected $cantidadDeHoras;
 
   public function __construct(string $elNombre, string $elApellido, int $laAntiguedad, int $elCodigo, int $cantHoras)
   {
