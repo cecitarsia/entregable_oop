@@ -86,9 +86,11 @@ class Curso{
     public function listarProfesores(){
       $ProfesorTitular = getProfesorTitular();
       $ProfesorAdjunto = getProfesorAdjunto();
+      $NombreProfesorTitular=$ProfesorTitular->getNombre();
+      $NombreProfesorAdjunto=$ProfesorAdjunto->getNombre();
          echo "<ul>";
-         echo "<li> Profesor Titular: $ProfesorTitular </li>";
-         echo "<li> Profesor Adjunto: $ProfesorAdjunto </li>";
+         echo "<li> Profesor Titular: $NombreProfesorTitular </li>";
+         echo "<li> Profesor Adjunto: $NombreProfesorAdjunto </li>";
          echo "</ul>";
       }
 }

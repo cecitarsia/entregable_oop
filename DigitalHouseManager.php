@@ -2,7 +2,7 @@
 	require_once 'autoload.php';
 
 
-	abstract class DigitalHouseManager
+class DigitalHouseManager
 	{
 		protected $listaAlumnos = [];
 		protected $listaProfesores = [];
@@ -89,6 +89,13 @@
 				}
 			}
 		}
+		//	b. Recorre la lista de profesores y elige al profesor
+		public function tomarProfesor($codigoProfesor){
+			foreach ($this->listaProfesores as $Profesor) {
+				if ($Profesor->getCodigo() === $codigoProfesor);
+				}
+			}
+
 
 	public function inscribirAlumno($codigoAlumno, $codigoCurso){
 		$curso = $this->tomarCurso($codigoCurso);
@@ -101,16 +108,17 @@
 	}
 
 	//I.6 -> Asigna profesores a un curso
-	public function asignarProfesores($codigoCurso, $codigoProfesorTitular, $codigoProfesorAdjunto)
+	public function asignarProfesores($codigoCurso, $codigoProfesorTitular, $codigoProfesorAdjunto){
 	//	a. Busca al profesor titular en la lista de profesores
-	$profesorTitular = $this->buscarProfesorTitular($codigoProfesorTitular);
+	$profesorTitular = $this->tomarProfesor($codigoProfesorTitular);
 	//	b. Busca al profesor adjunto en la lista de profesores
-	$profesorAdjunto = $this->buscarProfesorAdjunto($codigoProfesorAdjunto);
+	$profesorAdjunto = $this->tomarProfesor($codigoProfesorAdjunto);
+  //Recorre la lista de cursos y elige el curso
+	$curso = $this->tomarCurso($codigoCurso);
 
-
-
-
-
+	$curso->setProfesorTitular($profesorTitular);
+	$curso->setProfesorAdjunto($profesorAdjunto);
+}
 
 
 

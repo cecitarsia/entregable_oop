@@ -11,7 +11,7 @@
 			$this->setApellido($elApellido);
 			$this->setCodigo($elCodigo);
 			}
-		}
+
 
 			public function setNombre($elNombre) {
 				$this->nombre = $elNombre;
@@ -36,3 +36,4 @@
 			public function getCodigo() {
 				return $this->codigo;
 			}
+	}

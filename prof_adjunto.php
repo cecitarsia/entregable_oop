@@ -7,8 +7,9 @@ class Adjunto extends Profesor {
 
   public function __construct(string $elNombre, string $elApellido, int $laAntiguedad, int $elCodigo, int $cantHoras)
   {
-    parent::__construct( $elNombre, $elApellido, $laAntiguedad, $elCodigo)
+    parent::__construct( $elNombre, $elApellido, $laAntiguedad, $elCodigo);
 		 $this->setHoras($cantHoras);
+      }
 
 
      public function setHoras($cantHoras) {
@@ -19,4 +20,4 @@ class Adjunto extends Profesor {
        return $this->$cantHoras;
      }
 
-}}
+}
