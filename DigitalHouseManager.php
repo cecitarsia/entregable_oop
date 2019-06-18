@@ -68,7 +68,7 @@ class DigitalHouseManager
 	public function altaAlumno($nombre, $apellido, $codigoAlumno){
 		$nuevoAlumno = new Alumno ($nombre, $apellido, $codigoAlumno);
     array_push($this->listaAlumnos, $nuevoAlumno);
-    return $nuevoTitular;
+    return $nuevoAlumno;
 		}
 
 	//I.5 -> Inscribe un alumno a un curso si hay cupo disponible
@@ -92,8 +92,10 @@ class DigitalHouseManager
 		//	b. Recorre la lista de profesores y elige al profesor
 		public function tomarProfesor($codigoProfesor){
 			foreach ($this->listaProfesores as $Profesor) {
-				if ($Profesor->getCodigo() === $codigoProfesor);
-				}
+				if ($Profesor->getCodigo() == $codigoProfesor){
+				return $Profesor;}}
+				echo "No se encuentra el profesor";
+				return false;
 			}
 
 
@@ -113,12 +115,40 @@ class DigitalHouseManager
 	$profesorTitular = $this->tomarProfesor($codigoProfesorTitular);
 	//	b. Busca al profesor adjunto en la lista de profesores
 	$profesorAdjunto = $this->tomarProfesor($codigoProfesorAdjunto);
+
   //Recorre la lista de cursos y elige el curso
 	$curso = $this->tomarCurso($codigoCurso);
 
 	$curso->setProfesorTitular($profesorTitular);
 	$curso->setProfesorAdjunto($profesorAdjunto);
-}
+
+	}
+
+	public function BajaCurso($codigoCurso){
+		$curso = $this->tomarCurso($codigoCurso);
+
+			$key = array_search($curso, $this->listaCursos);
+			if ($key !== false) {
+					unset($this->listaCursos[$key]);
+					echo "¡Eliminación exitosa!";
+					return true;
+			}
+			echo "<br> No se eliminó el curso";
+			return false;
+	}
+	public function BajaProfesor($codigoProfesor){
+		$Profesor = $this->tomarProfesor($codigoProfesor);
+
+			$key = array_search($Profesor, $this->listaProfesores);
+			if ($key !== false) {
+					unset($this->listaProfesores[$key]);
+					echo "¡Eliminación exitosa del profesor!";
+					return true;
+			}
+			echo "<br> No se eliminó el profesor";
+			return false;
+	}
+
 
 
 

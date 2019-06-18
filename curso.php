@@ -98,9 +98,10 @@ class Curso
         $key = array_search($unAlumno, $this->Alumnos);
         if ($key !== false) {
             unset($this->Alumnos[$key]);
+            echo "¡Eliminación exitosa del alumno!";
             return true;
         }
-
+        echo "<br> No se eliminó el alumno";
         return false;
     }
 
