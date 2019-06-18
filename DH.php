@@ -10,10 +10,10 @@ $manager = new DigitalHouseManager;
 
 // Crear profesores
 
-$profesorTitular1 = $manager->altaProfesorTitular("Juan", "Perez", 1, 1, "Full Stack");
-$profesorTitular2 = $manager->altaProfesorTitular("Jose", "Rodriguez", 2, 2,"Android");
-$profesorAdjunto1 = $manager->altaProfesorAdjunto("Maria", "Lopez", 3, 20, 25);
-$profesorAdjunto2 = $manager->altaProfesorAdjunto("Julia", "Gomez", 4,21, 35);
+$profesorTitular1 = $manager->altaProfesorTitular("Juan", "Perez", 1, "Full Stack");
+$profesorTitular2 = $manager->altaProfesorTitular("Jose", "Rodriguez", 2,"Android");
+$profesorAdjunto1 = $manager->altaProfesorAdjunto("Maria", "Lopez", 3, 25);
+$profesorAdjunto2 = $manager->altaProfesorAdjunto("Julia", "Gomez", 4, 35);
 
 // Crear cursos
 
@@ -26,7 +26,7 @@ $alumno1 = $manager->altaAlumno("Cecilia", "Tarsia", 32);
 
 $alumno2 = $manager->altaAlumno("Pepe", "Torsio", 33);
 
-$alumno3 = $manager->altaAlumno("Luna", "Hitler", 34);
+$alumno3 = $manager->altaAlumno("Luna", "Perez", 34);
 
 // Asignar profesores a cursos
 $manager->asignarProfesores(20001,1,3);
